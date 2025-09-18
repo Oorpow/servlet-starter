@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="db.properties"/>
+
+    <settings>
+        <!-- 开启驼峰命名转换: last_name -> lastName -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 配置日志实现，方便调试 -->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+    </settings>
+
+    <typeAliases>
+        <!-- 为你的实体类（Model）设置别名，假设它们在 com.example.demo.model 包下 -->
+        <package name="com.example.demo.entity"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- 注册Mapper XML文件，假设它们在 resources/com/example/demo/mapper/ 目录下 -->
+        <package name="com.example.demo.mapper"/>
+    </mappers>
+
+</configuration>
