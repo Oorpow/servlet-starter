@@ -15,6 +15,12 @@
   <div>
     <input type="button" value="add" />
     <div>
+      session data
+      <c:if test="${not empty sessionScope.logged_user}">
+        <h3>halo ${sessionScope.logged_user.name}</h3>
+      </c:if>
+    </div>
+    <div>
       dispatch过来的数据 ${brandList}
     </div>
     <div>
